@@ -52,7 +52,7 @@ jobs:
         run: docker build -t poojajeeva/test ./JtProject
       
       - name: push the imagedocker push poojajeeva/jproj:test
-        run: docker push poojajeeva/jproj:test
+        run: docker push poojajeeva/test
       
 
     
