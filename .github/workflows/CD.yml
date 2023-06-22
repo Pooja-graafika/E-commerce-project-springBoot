@@ -26,5 +26,5 @@ jobs:
           
       - name: Check Container Logs
         run: |
-          container_id=$(echo ${{ steps.start-container.outputs.container_id }})
+          container_id=$(echo ${{ steps.run-container.outputs.container_id }})
           docker logs $container_id
