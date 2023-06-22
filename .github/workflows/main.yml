@@ -28,7 +28,11 @@ jobs:
         run: |
           cd JtProject
           ls
-        
+          
+      - name: Build with Maven
+        run: |
+          cd JtProject 
+          mvn package -DskipTests=true
 
 
   
