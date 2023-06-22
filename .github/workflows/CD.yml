@@ -58,3 +58,16 @@ jobs:
          container_ip=${{ needs.get-container-ip.outputs.container_ip }}
          echo "Container IP address: $container_ip"
     # Use the container_ip in your subsequent steps to access the container
+    
+      - name: Inspect Docker container
+        id: inspect-container
+        run: |
+          container_id=$(echo ${{ steps.run-container.outputs.container_id }})
+          container_ip=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $container_id)
+          echo "::set-output name=container_ip::$container_ip"
+
+      - name: Access the container
+        run: |
+          container_ip=${{ needs.inspect-container.outputs.container_ip }}
+          # Use the container_ip in your subsequent steps to access the container
+          echo "Container IP address: $container_ip
