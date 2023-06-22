@@ -23,6 +23,7 @@ jobs:
           echo "::set-output name=container_id::$container_id"
           sleep 10
           docker ps -a
-      - name: List Services
+      - name: Check Container Logs
         run: |
-          kubectl get services
+          container_id="778cad95bfc2"
+          docker logs $container_id
