@@ -70,4 +70,4 @@ jobs:
         run: |
           container_ip=${{ needs.inspect-container.outputs.container_ip }}
           # Use the container_ip in your subsequent steps to access the container
-          echo "Container IP address: $container_ip
+          echo "Container IP address: $container_ip"
