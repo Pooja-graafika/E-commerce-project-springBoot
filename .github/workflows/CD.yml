@@ -1,0 +1,25 @@
+name: CD
+
+on:
+  push:
+    branches:
+      - master2
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Fetch Docker image
+        run: docker pull poojajeeva/test:latest
+
+      - name: Start Docker containerpoojajeeva/test:latest
+        id: run-container
+        run: |
+          container_id=$(docker run -d -p 8080:8080 poojajeeva/test:latest)
+          echo "::set-output name=container_id::$container_id"
+          sleep 10
+          docker ps
