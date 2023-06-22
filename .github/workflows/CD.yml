@@ -23,7 +23,8 @@ jobs:
           echo "::set-output name=container_id::$container_id"
           sleep 10
           docker ps -a
+          
       - name: Check Container Logs
         run: |
-          container_id="778cad95bfc2"
+          container_id=$(echo ${{ steps.start-container.outputs.container_id }})
           docker logs $container_id
