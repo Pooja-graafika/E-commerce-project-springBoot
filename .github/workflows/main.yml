@@ -33,9 +33,6 @@ jobs:
         run: |
           cd JtProject 
           mvn package -DskipTests=true
-          
-      - name: List Maven build output
-        run: mvn -B help:effective-pom
         
       - name: List JAR files
         run: |
