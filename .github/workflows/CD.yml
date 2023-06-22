@@ -45,6 +45,10 @@ jobs:
         run: |
            container_id=$(docker ps -q)  # Get the container ID
            docker exec $container_id find /app -name "JtSpringProject-0.0.1-SNAPSHOT.jar"
+      - name: Access the container
+        run: |
+          host_port=${{ steps.get-port.outputs.host_port }}
+          echo "Accessing application at http://localhost:$host_port
            
       - name: Get Container IP address
         id: get-container-ip
