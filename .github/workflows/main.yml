@@ -50,6 +50,10 @@ jobs:
           
       - name: Build the Docker image
         run: docker build -t example ./JtProject
+      
+      - name: push the image
+        run: docker push poojajeeva/jproj:example
+      
 
     
        
