@@ -10,7 +10,7 @@ FROM openjdk:11-jdk
 WORKDIR /app
 
 # Copy the JAR file to the container
-COPY JtSpringProject-0.0.1-SNAPSHOT.jar /app/
+COPY ./target/*.jar /app/
 
 # Expose the port that the application listens on
 EXPOSE 8080
