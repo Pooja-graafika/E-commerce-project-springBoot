@@ -28,7 +28,7 @@ jobs:
         run: |
           container_id=$(echo ${{ steps.run-container.outputs.container_id }})
           docker logs $container_id
-      - name: Check File in Container
+      - name: Check JAR file in Docker container
         run: |
-          container_id=$(echo ${{ steps.run-container.outputs.container_id }})
-          docker exec $container_id ls /path/to/JtSpringProject-0.0.1-SNAPSHOT.jar 
+           container_id=$(docker ps -q)  # Get the container ID
+           docker exec $container_id find /app -name "JtSpringProject-0.0.1-SNAPSHOT.jar"
