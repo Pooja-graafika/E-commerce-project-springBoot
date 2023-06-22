@@ -28,6 +28,19 @@ jobs:
         run: |
           container_id=$(echo ${{ steps.run-container.outputs.container_id }})
           docker logs $container_id
+      
+      - name: Check if Container is Running
+        id: check-container
+        run: |
+          container_id=$(echo ${{ steps.run-container.outputs.container_id }})
+          container_status=$(docker inspect -f '{{.State.Running}}' $container_id)
+          if [ "$container_status" == "true" ]; then
+          echo "Container is running"
+          echo "::set-output name=container_running::true"
+          else
+          echo "Container is not running"
+          echo "::set-output name=container_running::false"
+          fi
       - name: Check JAR file in Docker container
         run: |
            container_id=$(docker ps -q)  # Get the container ID
